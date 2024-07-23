@@ -1,4 +1,4 @@
-<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+<nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
 
     <div class="container">
         <a class="navbar-brand" href="/">RestoBesto<span>.</span></a>
@@ -9,18 +9,31 @@
 
         <div class="collapse navbar-collapse" id="navbarsFurni">
             <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home</a>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
                 </li>
-                <li><a class="nav-link" href="{{ route('link.menu')  }}">Menu</a></li>
-                <li><a class="nav-link" href="{{ route('link.cart')  }}">Cart</a></li>
-                <li><a class="nav-link" href="{{ route('link.order')  }}">My Order</a></li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('link.menu') ? 'active' : '' }}" href="{{ route('link.menu') }}">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('cart') ? 'active' : '' }}" href="{{ route('link.cart') }}">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('order') ? 'active' : '' }}" href="{{ route('link.order') }}">My Order</a>
+                </li>
             </ul>
 
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                <li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
-        
+
 </nav>

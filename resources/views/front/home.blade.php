@@ -8,7 +8,7 @@
             <div class="col-lg-5">
                 <div class="intro-excerpt">
                     <h1>RestoBesto. <span clsas="d-block">Order Your Food easier</span></h1>
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, sed est. Excepturi enim incidunt distinctio veniam error praesentium ea velit.</p>
+                    <p class="mb-4">RestoBesto adalah sistem pemesanan makanan online yang memudahkan Anda untuk memesan makanan anda dengan praktis cukup melalui meja anda. Kami menyediakan berbagai macam hidangan lezat yang siap dipesan.</p>
                     <p><a href="{{ route('link.menu')  }}" class="btn btn-secondary me-2">Order Now</a>
                 </div>
             </div>
