@@ -13,13 +13,13 @@
                     <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('link.menu') ? 'active' : '' }}" href="{{ route('link.menu') }}">Menu</a>
+                    <a class="nav-link {{ Request::is('menu.index') ? 'active' : '' }}" href="{{ route('menu.index') }}">Menu</a>
+                </li>                
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('keranjang.index') ? 'active' : '' }}" href="{{ route('keranjang.index') }}">Keranjang</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('cart') ? 'active' : '' }}" href="{{ route('link.cart') }}">Cart</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('order') ? 'active' : '' }}" href="{{ route('link.order') }}">My Order</a>
+                    <a class="nav-link {{ Request::is('order') ? 'active' : '' }}" href="{{ route('link.order') }}">Pesanan</a>
                 </li>
             </ul>
 
