@@ -34,7 +34,15 @@
 
             @if (Auth::user()->role == 'kasir')
                 <ul class="custom-navbar-nav navbar-nav mb-2 mb-md-0 ms-auto me-auto">
-                    <a class="navbar-brand" href="#">DAFTAR PESANAN</a>
+                    <a class="navbar-brand" href="#">
+                        @if (Request::routeIs('kasir.index'))
+                            DAFTAR PESANAN
+                        @elseif (Request::routeIs('kasir.show'))
+                            PEMBAYARAN
+                        @else
+                            ...
+                        @endif
+                    </a>
                 </ul>
             @endif
 

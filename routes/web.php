@@ -40,3 +40,4 @@ Route::get('/pelayan/status', [PelayanController::class, 'status'])->name('pelay
 
 //kasir
 Route::get('/kasir/index', [KasirController::class, 'index'])->name('kasir.index');
+Route::get('/kasir/show', [KasirController::class, 'show'])->name('kasir.show');

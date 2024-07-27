@@ -21,12 +21,13 @@
                                   <img src="images/bowl-2.png" alt="Image" class="img-fluid">
                                 </td>
                                 <td class="product-name">
-                                  <h2 class="h5 text-black">Makanan 1</h2>
+                                  <h2 class="h5 text-black">Karoket Cihuyy</h2>
                                 </td>
                                 <td>1</td>
                                 <td>
                                     Diproses
                                 </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

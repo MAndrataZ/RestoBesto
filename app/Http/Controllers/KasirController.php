@@ -10,4 +10,9 @@ class KasirController extends Controller
     {
         return view('kasir.index');
     }
+
+    public function show()
+    {
+        return view('kasir.show');
+    }
 }
