@@ -26,5 +26,6 @@
         
         @include('layouts.front.script')
         @stack('script')
+        @yield('scripts')
     </body>
 </html>

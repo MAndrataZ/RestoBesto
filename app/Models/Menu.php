@@ -24,6 +24,6 @@ class Menu extends Model
         'deskripsi_menu',
         'harga',
         'stok', 
-        'gambar_menu', // Jika ada kolom lain yang perlu diisi massal, tambahkan di sini
+        'gambar_menu',
     ];
 }

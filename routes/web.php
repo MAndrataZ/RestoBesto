@@ -33,6 +33,9 @@ Route::get('/pesanan', [PesananController::class, 'index'])->name('pesanan.index
 Route::get('/koki/stok', [KokiController::class, 'stok'])->name('koki.stok');
 Route::get('/koki/detail', [KokiController::class, 'detail'])->name('koki.detail');
 
+Route::post('/update-stok', [KokiController::class, 'updateStok'])->name('update_stok');
+
+
 //pelayan
 Route::get('/pelayan/menu', [PelayanController::class, 'menu'])->name('pelayan.menu');
 Route::get('/pelayan/keranjang', [PelayanController::class, 'keranjang'])->name('pelayan.keranjang');
