@@ -46,33 +46,20 @@
                         <ul class="list-unstyled">
                             <li><a href="#">About us</a></li>
                             <li><a href="#">Services</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contact us</a></li>
                         </ul>
                     </div>
 
                     <div class="col-6 col-sm-6 col-md-3">
                         <ul class="list-unstyled">
                             <li><a href="#">Support</a></li>
-                            <li><a href="#">Knowledge base</a></li>
-                            <li><a href="#">Live chat</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-6 col-sm-6 col-md-3">
-                        <ul class="list-unstyled">
-                            <li><a href="#">Jobs</a></li>
                             <li><a href="#">Our team</a></li>
-                            <li><a href="#">Leadership</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
                         </ul>
                     </div>
 
                     <div class="col-6 col-sm-6 col-md-3">
                         <ul class="list-unstyled">
-                            <li><a href="#">Mie Ayam</a></li>
-                            <li><a href="#">Jus Harimau</a></li>
-                            <li><a href="#">Kue Hui</a></li>
+                            <li><a href="#">blog</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>

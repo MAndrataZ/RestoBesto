@@ -7,40 +7,44 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    function index(){
+    public function index()
+    {
         return view('front.login');
     }
-    function login(Request $request){
+
+    public function login(Request $request)
+    {
         $request->validate([
-            'username'=>'required',
-            'password'=>'required'
-        ],[
-            'username.required'=>'Username Wajib Diisi',
-            'password.required'=>'Password Wajib Diiisi'
+            'username' => 'required',
+            'password' => 'required'
+        ], [
+            'username.required' => 'Username Wajib Diisi',
+            'password.required' => 'Password Wajib Diiisi'
         ]);
 
-        $infologin =[
-            'username'=>$request->username,
-            'password'=>$request->password
+        $infologin = [
+            'username' => $request->username,
+            'password' => $request->password
         ];
 
-        if(Auth::attempt($infologin)){
-            if(Auth::user()->user == 'admin'){
-                return redirect('');
-            } elseif(Auth::user()->user == 'pelayan'){
-                return redirect('');
-            } elseif(Auth::user()->user == 'kasir'){
-                return redirect('');
-            } elseif(Auth::user()->user == 'koki'){
-                return redirect('');
+        if (Auth::attempt($infologin)) {
+            if (Auth::user()->role == 'admin') {
+                return redirect()->route('admin.index');
+            } elseif (Auth::user()->role == 'pelayan') {
+                return redirect()->route('pelayan.menu');
+            } elseif (Auth::user()->role == 'kasir') {
+                return redirect()->route('kasir.index');
+            } elseif (Auth::user()->role == 'koki') {
+                return redirect()->route('koki.stok');
             }
-        }else{
-            return redirect('')->withErrors('username dan Password yang dimasukkan tidak sesuai')->withInput();
+        } else {
+            return redirect()->route('login')->withErrors('Username dan Password yang dimasukkan tidak sesuai')->withInput();
         }
     }
 
-    function logout(){
+    public function logout()
+    {
         Auth::logout();
-        return redirect('');
+        return redirect()->route('login');
     }
 }

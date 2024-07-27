@@ -11,7 +11,7 @@
 <body>
     <div class="container py-5">
         <div class="text-center mb-5">
-            <h1>RestoBesto Login Pegawai</h1>
+            <h1>RestoBesto</h1>
         </div>
         <div class="w-50 center border rounded px-3 py-3 mx-auto">
             <h1>Login</h1>
@@ -39,6 +39,9 @@
                     <button name="submit" type="submit" class="btn btn-primary">Login</button>
                 </div>
             </form>
+            <div class="text-center mt-3">
+                <a href="/" class="btn btn-link">Kembali ke menu pelanggan</a>
+            </div>
         </div>
     </div>
 </body>
