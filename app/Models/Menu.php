@@ -12,12 +12,18 @@ class Menu extends Model
     // Jika nama tabel tidak sesuai dengan penamaan konvensi Laravel, tentukan nama tabel secara eksplisit
     protected $table = 'menu';
 
+    // Menentukan primary key yang digunakan
+    protected $primaryKey = 'id_menu';
+
+    public $incrementing = false;
+
     // Jika ada kolom yang bisa diisi massal, gunakan $fillable
     protected $fillable = [
         'id_menu',
         'nama_menu',
         'deskripsi_menu',
         'harga',
+        'stok', 
         'gambar_menu', // Jika ada kolom lain yang perlu diisi massal, tambahkan di sini
     ];
 }

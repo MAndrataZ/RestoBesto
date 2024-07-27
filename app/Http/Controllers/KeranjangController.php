@@ -7,45 +7,55 @@ use App\Models\Menu;
 
 class KeranjangController extends Controller
 {
-    public function index()
-    {
-        $keranjang = session()->get('keranjang', []);
-        $subtotal = collect($keranjang)->sum(function($item) {
-            return $item['price'] * $item['quantity'];
-        });
-
-        return view('keranjang.index', compact('keranjang', 'subtotal'));
-    }
-
     public function tambahKeKeranjang(Request $request, $id)
     {
         $menu = Menu::find($id);
 
         if (!$menu) {
-            abort(404);
+            return redirect()->back()->with('error', 'Menu tidak ditemukan.');
         }
+
+        $qty = $request->input('qty', 1); // Dapatkan jumlah dari form, default ke 1 jika tidak ada
 
         $keranjang = session()->get('keranjang', []);
 
-        // Mengambil kuantitas dari permintaan
-        $quantity = $request->input('qty', 1);
-
-        // Jika item sudah ada di keranjang, tambahkan kuantitasnya
         if (isset($keranjang[$id])) {
-            $keranjang[$id]['quantity'] += $quantity;
+            $keranjang[$id]['total'] += $qty;
         } else {
-            // Jika item belum ada di keranjang, tambahkan item baru
             $keranjang[$id] = [
-                "name" => $menu->nama_menu,
-                "description" => $menu->deskripsi_menu,
-                "price" => $menu->harga,
-                "quantity" => $quantity,
-                "image" => $menu->gambar_menu
+                "nama_menu" => $menu->nama_menu,
+                "total" => $qty,
+                "harga" => $menu->harga,
+                "gambar_menu" => $menu->gambar_menu
             ];
         }
 
         session()->put('keranjang', $keranjang);
 
-        return redirect()->route('keranjang.index')->with('success', 'Item added to keranjang successfully!');
+        return redirect()->back()->with('sukses', 'Menu berhasil ditambahkan ke keranjang.');
+    }
+
+    public function index()
+    {
+        $keranjang = session()->get('keranjang', []);
+        $subtotal = array_sum(array_map(function($item) {
+            return $item['harga'] * $item['total'];
+        }, $keranjang));
+
+        return view('keranjang.index', compact('keranjang', 'subtotal'));
+    }
+
+    public function hapusDariKeranjang($id)
+    {
+        $keranjang = session()->get('keranjang');
+
+        if (isset($keranjang[$id])) {
+            unset($keranjang[$id]);
+            session()->put('keranjang', $keranjang);
+        }
+
+        return redirect()->back()->with('sukses', 'Item berhasil dihapus dari keranjang.');
     }
 }
+
+

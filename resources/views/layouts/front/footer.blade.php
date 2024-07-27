@@ -30,7 +30,7 @@
         <div class="row g-5 mb-5">
             <div class="col-lg-4">
                 <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">RestoBesto<span>.</span></a></div>
-                <p class="mb-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. In quae distinctio quod deserunt doloribus accusamus quia cumque ipsa asperiores, labore esse aliquam illum nam fugiat commodi unde minus iusto quisquam!</p>
+                <p class="mb-4">Resto Besto, Web yang dibuat untuk memenuhi tugas RPL</p>
 
                 <ul class="list-unstyled custom-social">
                     <li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>

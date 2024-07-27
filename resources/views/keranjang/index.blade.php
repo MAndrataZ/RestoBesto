@@ -22,25 +22,17 @@
                                 @foreach(session('keranjang') as $id => $details)
                                     <tr>
                                         <td class="product-thumbnail">
-                                            <img src="{{ $details['image'] }}" alt="Image" class="img-fluid">
+                                            <img src="{{ $details['gambar_menu'] }}" alt="{{ $details['nama_menu'] }}" class="img-fluid">
                                         </td>
                                         <td class="product-name">
-                                            <h2 class="h5 text-black">{{ $details['name'] }}</h2>
+                                            <h2 class="h5 text-black">{{ $details['nama_menu'] }}</h2>
                                         </td>
-                                        <td>Rp. {{ number_format($details['price'], 0, ',', '.') }}</td>
+                                        <td>Rp. {{ number_format($details['harga'], 0, ',', '.') }}</td>
                                         <td>
-                                            <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                                                <div class="input-group-prepend">
-                                                    <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                                                </div>
-                                                <input type="text" class="form-control text-center quantity-amount" value="{{ $details['quantity'] }}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                                                </div>
-                                            </div>
+                                            <input type="number" name="qty" class="form-control text-center" value="{{ $details['total'] }}" min="1" max="99">
                                         </td>
-                                        <td>Rp. {{ number_format($details['price'] * $details['quantity'], 0, ',', '.') }}</td>
-                                        <td><a href="#" class="btn btn-black btn-sm">X</a></td>
+                                        <td>Rp. {{ number_format($details['harga'] * $details['total'], 0, ',', '.') }}</td>
+                                        <td><a href="{{ route('hapus_dari_keranjang', $id) }}" class="btn btn-primary btn-sm">X</a></td>
                                     </tr>
                                 @endforeach
                             @else
@@ -57,10 +49,11 @@
         <!-- New Section for Table Number Input -->
         <div class="row mb-5">
             <div class="col-md-12">
-                <form class="form-inline">
+                <form id="table-number-form" class="form-inline" method="post">
+                    @csrf
                     <div class="form-group">
                         <label for="table-number" class="sr-only">Nomor Meja</label>
-                        <input type="number" class="form-control" id="table-number" placeholder="Nomor Meja" style="width: 150px;">
+                        <input type="number" class="form-control" id="table-number" name="table_number" placeholder="Nomor Meja" style="width: 150px;" required>
                     </div>
                     <button type="submit" class="btn btn-black btn-sm btn-block">Simpan</button>
                 </form>
@@ -72,10 +65,10 @@
             <div class="col-md-6">
                 <div class="row mb-5">
                     <div class="col-md-6 mb-3 mb-md-0">
-                        <button class="btn btn-black btn-sm btn-block">Update Keranjang</button>
+                        <a href="#" class="btn btn-secondary me-3">Edit Keranjang</a>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-outline-black btn-sm btn-block">Order Kembali</button>
+                        <a href="{{ route('menu.index') }}" class="btn btn-secondary me-3">Tambah Pesanan</a>
                     </div>
                 </div>
             </div>
@@ -123,4 +116,5 @@
         </div>
     </div>
 </div>
+
 @endsection

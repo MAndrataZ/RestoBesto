@@ -19,7 +19,7 @@
                     <a class="nav-link {{ Request::is('keranjang.index') ? 'active' : '' }}" href="{{ route('keranjang.index') }}">Keranjang</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('order') ? 'active' : '' }}" href="{{ route('link.order') }}">Pesanan</a>
+                    <a class="nav-link {{ Request::is('pesanan.index') ? 'active' : '' }}" href="{{ route('pesanan.index') }}">Pesanan</a>
                 </li>
             </ul>
 
