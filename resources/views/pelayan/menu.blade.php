@@ -4,6 +4,14 @@
 <div class="container">
     <h1 class="title my-4">Menu Kita</h1>
 
+    <!-- Form Pencarian -->
+    <form method="GET" action="{{ route('search_menu') }}" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="query" class="form-control" placeholder="Cari menu..." value="{{ request()->query('query') }}">
+            <button class="btn btn-secondary" type="submit">Cari</button>
+        </div>
+    </form>
+
     <div class="row">
         @if(session('sukses'))
             <div class="alert alert-success">

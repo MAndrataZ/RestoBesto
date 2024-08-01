@@ -30,6 +30,7 @@
                                     <select name="status" class="form-control">
                                         <option value="DIPROSES" selected>DIPROSES</option>
                                         <option value="SELESAI">SELESAI</option>
+                                        <option value="DITERIMA">DITERIMA</option>
                                     </select>
                                 </td>
                             </tr>
@@ -47,6 +48,7 @@
                                     <select name="status" class="form-control">
                                         <option value="DIPROSES" selected>DIPROSES</option>
                                         <option value="SELESAI">SELESAI</option>
+                                        <option value="DITERIMA">DITERIMA</option>
                                     </select>
                                 </td>
                             </tr>
@@ -64,6 +66,7 @@
                                     <select name="status" class="form-control">
                                         <option value="DIPROSES" selected>DIPROSES</option>
                                         <option value="SELESAI">SELESAI</option>
+                                        <option value="DITERIMA">DITERIMA</option>
                                     </select>
                                 </td>
                             </tr>
@@ -81,6 +84,7 @@
                                     <select name="status" class="form-control">
                                         <option value="DIPROSES" selected>DIPROSES</option>
                                         <option value="SELESAI">SELESAI</option>
+                                        <option value="DITERIMA">DITERIMA</option>
                                     </select>
                                 </td>
                             </tr>

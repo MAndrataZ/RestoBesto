@@ -40,6 +40,7 @@ Route::post('/update-stok', [KokiController::class, 'updateStok'])->name('update
 Route::get('/pelayan/menu', [PelayanController::class, 'menu'])->name('pelayan.menu');
 Route::get('/pelayan/keranjang', [PelayanController::class, 'keranjang'])->name('pelayan.keranjang');
 Route::get('/pelayan/status', [PelayanController::class, 'status'])->name('pelayan.status');
+Route::get('/menu/search', [MenuController::class, 'search'])->name('search_menu');
 
 //kasir
 Route::get('/kasir/index', [KasirController::class, 'index'])->name('kasir.index');
