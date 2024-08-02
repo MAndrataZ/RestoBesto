@@ -22,7 +22,7 @@
             <div class="col-md-4 mb-4">
                 <form method="post" action="{{ route('tambah_ke_keranjang', $menu->id_menu) }}" class="box">
                     @csrf
-                    <img src="{{ $menu->gambar_menu }}" alt="{{ $menu->nama_menu }}" height="10rem" width="100%">
+                    <img src="{{ asset($menu->gambar_menu) }}" alt="{{ $menu->nama_menu }}" height="10rem" width="100%">
                     <a href="#" class="cat">{{ $menu->nama_menu }}</a>
                     <div class="name">{{ $menu->deskripsi_menu }}</div>
                     <div class="d-flex justify-content-between align-items-center">

@@ -17,6 +17,9 @@ class Menu extends Model
 
     public $incrementing = false;
 
+    public $timestamps = false;
+
+
     // Jika ada kolom yang bisa diisi massal, gunakan $fillable
     protected $fillable = [
         'id_menu',
@@ -26,4 +29,10 @@ class Menu extends Model
         'stok', 
         'gambar_menu',
     ];
+
+    // Definisikan relasi dengan DetailPesanan
+    public function detailPesanan()
+    {
+        return $this->hasMany(DetailPesanan::class, 'id_menu', 'id_menu');
+    }
 }

@@ -4,7 +4,7 @@
 <div class="untree_co-section before-footer-section">
     <div class="container">
         <div class="row mb-5">
-            <form class="col-md-12" method="post">
+            <div class="col-md-12">
                 <div class="site-blocks-table">
                     <table class="table">
                         <thead>
@@ -16,22 +16,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="product-thumbnail">
-                                  <img src="images/bowl-2.png" alt="Image" class="img-fluid">
-                                </td>
-                                <td class="product-name">
-                                  <h2 class="h5 text-black">Karoket Cihuyy</h2>
-                                </td>
-                                <td>1</td>
-                                <td>
-                                    Diproses
-                                </td>
-                            </tr>
+                            @forelse($pesanan as $item)
+                                @foreach($item->detailPesanan as $detail)
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <img src="{{ $detail->menu->gambar_menu }}" alt="{{ $detail->menu->nama_menu }}" class="img-fluid">
+                                        </td>
+                                        <td class="product-name">
+                                            <h2 class="h5 text-black">{{ $detail->menu->nama_menu }}</h2>
+                                        </td>
+                                        <td>{{ $detail->qty }}</td>
+                                        <td>{{ $item->status }}</td>
+                                    </tr>
+                                @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="text-center">Belum ada pesanan</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

@@ -5,7 +5,7 @@
     <h1 class="title my-4">Menu Kita</h1>
 
     <!-- Form Pencarian -->
-    <form method="GET" action="{{ route('search_menu') }}" class="mb-4">
+    <form method="GET" action="{{ route('menu.index') }}" class="mb-4">
         <div class="input-group">
             <input type="text" name="query" class="form-control" placeholder="Cari menu..." value="{{ request()->query('query') }}">
             <button class="btn btn-secondary" type="submit">Cari</button>
@@ -42,14 +42,4 @@
         @endif
     </div>
 </div>
-
-{{-- <script>
-    @if(session('error'))
-    alert('{{ session('error') }}')
-    @endif
-    
-    @if(session('sukses'))
-    alert('{{ session('sukses') }}')
-    @endif
-</script> --}}
 @endsection

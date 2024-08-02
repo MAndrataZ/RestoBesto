@@ -7,18 +7,16 @@ use App\Models\Menu;
 
 class MenuController extends Controller
 {
-    public function index()
-    {
-        $menus = Menu::all();
-        return view('menu.index', ['menus' => $menus]);
-    }
-
-    public function search(Request $request)
+    public function index(Request $request)
     {
         $query = $request->input('query');
         
-        $menus = Menu::where('nama_menu', 'LIKE', "%{$query}%")->get();
-        
+        if ($query) {
+    $menus = Menu::where('nama_menu', 'LIKE', "%{$query}%")->get();
+    } else {
+    $menus = Menu::all();
+    } 
         return view('menu.index', ['menus' => $menus]);
     }
+
 }

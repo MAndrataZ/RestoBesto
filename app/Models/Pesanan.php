@@ -2,23 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Pesanan extends Model
 {
-    use HasFactory;
+    protected $table = 'pesanan';
+    protected $primaryKey = 'id_pesanan';
+    public $incrementing = false; // Karena id_pesanan adalah VARCHAR
+    protected $keyType = 'string'; // Karena id_pesanan adalah VARCHAR
+    public $timestamps = false;
 
-    protected $fillable = [
-        'id_pesanan',
-        'nomor_meja',
-        'tanggal',
-        'total',
-        'status',
-    ];
-
-    public function menus()
+    // Definisikan relasi dengan DetailPesanan
+    public function detailPesanan()
     {
-        return $this->belongsToMany(Menu::class)->withPivot('jumlah', 'harga');
+        return $this->hasMany(DetailPesanan::class, 'id_pesanan', 'id_pesanan');
     }
 }

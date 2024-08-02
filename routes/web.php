@@ -27,7 +27,11 @@ Route::post('/tambah-ke-keranjang/{id}', [KeranjangController::class, 'tambahKeK
 Route::get('/hapus-dari-keranjang/{id}', [KeranjangController::class, 'hapusDariKeranjang'])->name('hapus_dari_keranjang');
 
 Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang.index');
+Route::post('/update-keranjang', [KeranjangController::class, 'updateKeranjang'])->name('update_keranjang');
+
 Route::get('/pesanan', [PesananController::class, 'index'])->name('pesanan.index');
+Route::post('/proses-pesanan', [KeranjangController::class, 'prosesPesanan'])->name('proses_pesanan');
+
 
 // koki
 Route::get('/koki/stok', [KokiController::class, 'stok'])->name('koki.stok');

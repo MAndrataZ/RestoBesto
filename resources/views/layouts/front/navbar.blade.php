@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarsFurni">
             <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
+                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Beranda</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('menu.index') ? 'active' : '' }}" href="{{ route('menu.index') }}">Menu</a>

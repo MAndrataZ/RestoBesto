@@ -22,7 +22,7 @@
                                 @foreach(session('keranjang') as $id => $details)
                                     <tr>
                                         <td class="product-thumbnail">
-                                            <img src="{{ $details['gambar_menu'] }}" alt="{{ $details['nama_menu'] }}" class="img-fluid">
+                                            <img src="{{ asset($details['gambar_menu']) }}" alt="{{ $details['nama_menu'] }}" class="img-fluid">
                                         </td>
                                         <td class="product-name">
                                             <h2 class="h5 text-black">{{ $details['nama_menu'] }}</h2>
@@ -107,7 +107,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.html'">Proses Pesanan Anda</button>
+                                <button class="btn btn-black btn-lg py-3 btn-block" onclick="#">Proses Pesanan Anda</button>
                             </div>
                         </div>
                     </div>
