@@ -163,5 +163,11 @@
         return (number < 0 ? '-' : '') + numbersString + formattedNumber
                + (decimalsString ? decPoint + decimalsString : '');
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        @if(session('sukses'))
+            alert('{{ session('sukses') }}');
+        @endif
+    });
 </script>
 @endsection

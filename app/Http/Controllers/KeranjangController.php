@@ -63,59 +63,60 @@ class KeranjangController extends Controller
     }
 
     public function prosesPesanan(Request $request)
-    {
-        // Validasi nomor meja
-        $request->validate([
-            'table_number' => 'required|integer|min:1',
-        ]);
+{
+    // Validasi nomor meja
+    $request->validate([
+        'table_number' => 'required|integer|min:1',
+    ]);
 
-        $noMeja = $request->input('table_number');
-        $keranjang = session()->get('keranjang', []);
-        $subtotal = array_sum(array_map(function($item) {
-            return $item['harga'] * $item['total'];
-        }, $keranjang));
+    $noMeja = $request->input('table_number');
+    $keranjang = session()->get('keranjang', []);
+    $subtotal = array_sum(array_map(function($item) {
+        return $item['harga'] * $item['total'];
+    }, $keranjang));
 
-        // Menghasilkan ID pesanan secara manual
-        $idPesanan = 'ORD-' . date('YmdHis') . '-' . strtoupper(Str::random(6));
+    // Menghasilkan ID pesanan secara manual
+    $idPesanan = 'ORD-' . date('YmdHis') . '-' . strtoupper(Str::random(6));
 
-        // Mulai transaksi untuk menghindari data yang tidak konsisten
-         DB::beginTransaction();
-         try {
-             // Simpan data ke tabel pesanan
-             $pesanan = new Pesanan();
-             $pesanan->id_pesanan = $idPesanan;
-             $pesanan->no_meja = $noMeja;
-             $pesanan->tanggal = now();
-             $pesanan->total = $subtotal;
-             $pesanan->status = 'Diproses';
-             $pesanan->save();
+    // Mulai transaksi untuk menghindari data yang tidak konsisten
+    DB::beginTransaction();
+    try {
+        // Simpan data ke tabel pesanan
+        $pesanan = new Pesanan();
+        $pesanan->id_pesanan = $idPesanan;
+        $pesanan->no_meja = $noMeja;
+        $pesanan->tanggal = now();
+        $pesanan->total = $subtotal;
+        $pesanan->status = 'Diproses';
+        $pesanan->save();
 
-            // Simpan detail pesanan ke tabel detail_pesanan
-            foreach ($keranjang as $id => $details) {
-
-                                DB::table('detail_pesanan')->insert([
-                                    'id_pesanan' => $idPesanan,
-                                    'subtotal' => $details['harga'] * $details['total'],
-                                    'qty' => $details['total'],
-                                    'id_menu' => $id,
-                                    'id_detail' => str::random(5) . $id
-                                ]);
-                            }
-            // Hapus keranjang setelah pesanan diproses
-            session()->forget('keranjang');
-
-            // Commit transaksi
-            DB::commit();
-
-            // Redirect dengan notifikasi
-            return redirect()->route('keranjang.index')->with('sukses', 'Pesanan berhasil diproses.');
-
-         } catch (\Exception $e) {
-             // Rollback transaksi jika terjadi error
-             DB::rollback();
-             return redirect()->route('keranjang.index')->with('error', 'Terjadi kesalahan, pesanan gagal diproses.');
+        // Simpan detail pesanan ke tabel detail_pesanan
+        foreach ($keranjang as $id => $details) {
+            DB::table('detail_pesanan')->insert([
+                'id_pesanan' => $idPesanan,
+                'subtotal' => $details['harga'] * $details['total'],
+                'qty' => $details['total'],
+                'id_menu' => $id,
+                'id_detail' => Str::random(5) . $id
+            ]);
         }
+
+        // Hapus keranjang setelah pesanan diproses
+        session()->forget('keranjang');
+
+        // Commit transaksi
+        DB::commit();
+
+        // Redirect dengan notifikasi
+        return redirect()->route('keranjang.index')->with('sukses', 'Pesanan berhasil diproses.');
+
+    } catch (\Exception $e) {
+        // Rollback transaksi jika terjadi error
+        DB::rollback();
+        return redirect()->route('keranjang.index')->with('error', 'Terjadi kesalahan, pesanan gagal diproses.');
     }
+}
+
 
 
 
